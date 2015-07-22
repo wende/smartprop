@@ -9,6 +9,7 @@
   "scripts": {
     "test": "mocha --compilers coffee:coffee-script/register"
   },
+  "repository": "https://github.com/iraasta/smartprop.git",
   "author": "",
   "license": "ISC",
   "devDependencies": {
