@@ -24,16 +24,28 @@ data = {
   }
 }
 var name = new SmartProp("name")
-name.findIn(data)   #=> "Chris"
+name.findIn(data)   //=> "Chris"
 
 var price = new SmartProp("price")
-price.findIn(data)  #=> 10
+price.findIn(data)  //=> 10
 
 var site = new SmartProp(/site/)
-site.findIn(data)   #=> "www.site.com"
+site.findIn(data)   //=> "www.site.com"
 ```
 ### SmartObject
 ```javascript
-var smartobject = new SmartObject({name : "name", price: "price, website: /site/})
-smartobject.map(data) #=> {name : "Chris, price: 10, website: www.site.com"}
+var smartobject = new SmartObject({name : "name", price: "price", website: /site/})
+smartobject.map(data)    //=> {name : "Chris, price: 10, website: www.site.com"}
 ```
+
+### Performance
+If You wonder if: 
+```javascript
+(new SmartProp("name")).findIn(data)
+```
+than 
+```javascript
+data["item"]["owner"]["profile"]["name"]
+```
+
+SmartProp and SmartObject automatically cache the location of the property, and once fed the similar data it uses the same code You'd use while not using the `smartprop` at all. So it is less performant, but just the first time it is used.
