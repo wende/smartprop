@@ -1,0 +1,18 @@
+{
+  "name": "smartprop",
+  "version": "1.0.0",
+  "description": "Smart and effortless json data search",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "mocha --compilers coffee:coffee-script/register"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "coffee-script": "^1.9.3",
+    "chai": "latest"
+  }
+}
