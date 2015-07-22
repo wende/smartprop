@@ -34,6 +34,6 @@ site.findIn(data)   #=> "www.site.com"
 ```
 ### SmartObject
 ```javascript
-var smartobject = new SmartObject({name : "name", price: "price, website: /site/})
-smartobject.map(data) #=> {name : "Chris, price: 10, website: www.site.com"}
+var smartobject = new SmartObject({name : "name", price: "price", website: /site/})
+smartobject.map(data)    #=> {name : "Chris, price: 10, website: www.site.com"}
 ```
