@@ -20,13 +20,13 @@ module.exports.SmartProp = class SmartProp
   @param prop : String
   @param [name] : String
   ###
-  get : (collection) ->
-    if not @foundOnce then @_get(collection)
+  findIn : (collection) ->
+    if not @foundOnce then @_findIn(collection)
     else
       result = collection;
       @cache.map (step) -> result = result[step]
       result
-  _get : (collection) ->
+  _findIn : (collection) ->
     self = @
     #if there are just 2 params given
     keys = Object.keys(collection)
@@ -37,7 +37,7 @@ module.exports.SmartProp = class SmartProp
       #console.log("nested")
       multi = (knv.filter ([k,v]) -> (typeof v) == "object").map ([k,v]) ->
         self.cache.push(k);
-        self._get(v)
+        self._findIn(v)
       #console.log "multi"
       #console.log multi
       if !multi.length then null
@@ -61,8 +61,8 @@ assignObject = (from, to) ->
   newobj = {}
   Object.keys(to).map (key) ->
     val = to[key]
-    if typeof val == "object" and not val instanceof RegExp then newobj[key] = val.get(from)
-    else newobj[key] = val.get(from)
+    if typeof val == "object" and not val instanceof RegExp then newobj[key] = val.findIn(from)
+    else newobj[key] = val.findIn(from)
   newobj
 
 module.exports.SmartObject = class SmartObject
